@@ -24,7 +24,7 @@
     /* Paths */
     "baseUrl": "./src",
     "paths": {
-      "game-systems/*": ["game-systems/*"]
+      "core-utils/*": ["core-utils/*"]
     }
   },
   "include": ["src"]

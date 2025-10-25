@@ -1,11 +1,11 @@
-import { ApplicationSystem } from 'game-systems/application-system/ApplicationSystem.ts';
-import { LoaderSystem } from 'game-systems/loader-system/LoaderSystem.ts';
-import { EntitiesSystem } from 'game-systems/entities-system/EntitiesSystem.ts';
+import { initApplication } from 'core-utils/application/application.ts';
+import { initLoader } from 'core-utils/assets/assets.ts';
+import { initResponsive } from "core-utils/responsive/responsive.ts";
 
-async function main(): Promise<void> {
-    await ApplicationSystem.init();
-    await LoaderSystem.init();
-    await EntitiesSystem.init();
+async function main() {
+    await initApplication();
+    await initLoader();
+    await initResponsive();
 }
 
 main().catch((i_error) => console.error('Game failed to start:', i_error));

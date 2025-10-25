@@ -1,0 +1,1 @@
+export const aceOfShadowsText = 'Ace of Shadows';
