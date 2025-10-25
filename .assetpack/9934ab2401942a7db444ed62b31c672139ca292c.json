@@ -1,0 +1,311 @@
+{
+    "assets": {
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets": {
+            "isFolder": true,
+            "metaData": {},
+            "inheritedMetaData": {},
+            "transformData": {},
+            "stats": {
+                "date": 1761398083397,
+                "duration": 1.484899999999982,
+                "success": true
+            }
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}": {
+            "isFolder": true,
+            "parent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets",
+            "metaData": {
+                "m": true
+            },
+            "inheritedMetaData": {},
+            "transformData": {},
+            "stats": {
+                "date": 1761398083397,
+                "duration": 1.2433000000000334,
+                "success": true
+            }
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}/bunny.png": {
+            "isFolder": false,
+            "parent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {},
+            "stats": {
+                "date": 1761398083397,
+                "duration": 11.441099999999949,
+                "success": true
+            },
+            "hash": "eDwLAQ"
+        },
+        ".assetpack/mipmap/preload{m}/bunny.png": {
+            "isFolder": false,
+            "transformParent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}/bunny.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/bunny.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/bunny.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/bunny-42u6tQ.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/bunny.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/bunny-42u6tQ.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/bunny-42u6tQ.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/bunny.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/bunny.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/bunny-3BQJVA.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/bunny.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/bunny-3BQJVA.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/bunny-3BQJVA.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/mipmap/preload{m}/bunny@0.5x.png": {
+            "isFolder": false,
+            "transformParent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}/bunny.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/bunny@0.5x.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/bunny@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/bunny-QFxt2A@0.5x.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/bunny@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/bunny-QFxt2A@0.5x.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/bunny-QFxt2A@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/bunny@0.5x.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/bunny@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/bunny-MsYDww@0.5x.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/bunny@0.5x.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/bunny-MsYDww@0.5x.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/bunny-MsYDww@0.5x.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}/favicon.png": {
+            "isFolder": false,
+            "parent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {},
+            "stats": {
+                "date": 1761398083398,
+                "duration": 12.843999999999994,
+                "success": true
+            },
+            "hash": "s6ylgA"
+        },
+        ".assetpack/mipmap/preload{m}/favicon.png": {
+            "isFolder": false,
+            "transformParent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}/favicon.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/favicon.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/favicon.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/favicon-rtAorw.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/favicon.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/favicon-rtAorw.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/favicon-rtAorw.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/favicon.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/favicon.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/favicon-iKQ4bQ.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/favicon.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/favicon-iKQ4bQ.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/favicon-iKQ4bQ.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/mipmap/preload{m}/favicon@0.5x.png": {
+            "isFolder": false,
+            "transformParent": "C:/Users/jorge/WebstormProjects/softgames-test-2025/raw-assets/preload{m}/favicon.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/favicon@0.5x.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/favicon@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/favicon-y5SRSw@0.5x.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/favicon@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/favicon-y5SRSw@0.5x.png": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/favicon-y5SRSw@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/compress/preload{m}/favicon@0.5x.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/mipmap/preload{m}/favicon@0.5x.png",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        ".assetpack/cache-buster/preload{m}/favicon-8JD1TQ@0.5x.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/compress/preload{m}/favicon@0.5x.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        },
+        "C:/Users/jorge/WebstormProjects/softgames-test-2025/public/assets/preload/favicon-8JD1TQ@0.5x.webp": {
+            "isFolder": false,
+            "transformParent": ".assetpack/cache-buster/preload{m}/favicon-8JD1TQ@0.5x.webp",
+            "metaData": {},
+            "inheritedMetaData": {
+                "m": true
+            },
+            "transformData": {}
+        }
+    }
+}

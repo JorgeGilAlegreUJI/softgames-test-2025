@@ -1,16 +1,16 @@
-import {Application} from "pixi.js";
+import { Application } from 'pixi.js';
 
 export class ApplicationSystem {
-    static application: Application;
+    static app: Application;
 
-    static async init(): Promise<void> {
-        const pixiContainer = "pixi-container";
+    static async init() {
+        const pixiContainer = 'pixi-container';
         const container = document.getElementById(pixiContainer);
-        if(!container){
+        if (!container) {
             throw new Error(`Could not find expected container: ${pixiContainer}`);
         }
-        this.application = new Application();
-        await this.application.init({ resizeTo: window });
-        container.appendChild(this.application.canvas);
+        this.app = new Application();
+        await this.app.init({ resizeTo: window });
+        container.appendChild(this.app.canvas);
     }
 }
