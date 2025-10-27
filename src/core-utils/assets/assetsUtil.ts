@@ -1,11 +1,11 @@
-import {Assets, AssetsManifest, UnresolvedAsset} from "pixi.js";
+import { Assets, AssetsManifest, UnresolvedAsset } from 'pixi.js';
 
 let assetsManifest: AssetsManifest = { bundles: [] };
 
 // Store bundles already loaded. They can be chcked later.
 const loadedBundles: string[] = [];
 
- async function fetchAssetsManifest(url: string) {
+async function fetchAssetsManifest(url: string) {
     const response = await fetch(url);
     const manifest = await response.json();
     if (!manifest.bundles) {
@@ -41,7 +41,7 @@ export async function loadBundles(bundles: string | string[]) {
 }
 
 function isBundleLoaded(bundleName: string) {
-    const bundleManifest = assetsManifest.bundles.find((b: { name: string; }) => b.name === bundleName);
+    const bundleManifest = assetsManifest.bundles.find((b: { name: string }) => b.name === bundleName);
 
     if (!bundleManifest) {
         return false;

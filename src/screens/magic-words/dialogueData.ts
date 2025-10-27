@@ -13,7 +13,7 @@ export interface Emoji {
 export interface Avatar {
     name: string;
     url: string;
-    position: "left" | "right" ;
+    position: 'left' | 'right';
 }
 
 export interface DialogueData {

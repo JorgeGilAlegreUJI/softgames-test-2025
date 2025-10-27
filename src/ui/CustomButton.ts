@@ -1,11 +1,11 @@
-import {FancyButton} from "@pixi/ui";
-import { Text, TextStyle} from 'pixi.js';
-import {clickSoundAsset, shortBabyFontAsset} from "core-utils/assets/assetRegistry.ts";
-import {playOneShotSound} from "core-utils/music/musicUtil.ts";
+import { FancyButton } from '@pixi/ui';
+import { Text, TextStyle } from 'pixi.js';
+import { clickSoundAsset, shortBabyFontAsset } from 'core-utils/assets/assetRegistry.ts';
+import { playOneShotSound } from 'core-utils/music/musicUtil.ts';
 
 // Generic class for button, so we can define our default behaviour. Mostly Ui presentation and  animation but also sound.
-export class CustomButton extends FancyButton{
-    constructor(defaultViewAsset: string, text: string, scale : number) {
+export class CustomButton extends FancyButton {
+    constructor(defaultViewAsset: string, text: string, scale: number) {
         super({
             defaultView: defaultViewAsset,
             anchor: 0.5,
@@ -18,7 +18,7 @@ export class CustomButton extends FancyButton{
                         scale: {
                             x: 1.1,
                             y: 1.1,
-                        }
+                        },
                     },
                     duration: 100,
                 },
@@ -28,11 +28,11 @@ export class CustomButton extends FancyButton{
                         scale: {
                             x: 0.9,
                             y: 0.9,
-                        }
+                        },
                     },
                     duration: 70,
-                }
-            }
+                },
+            },
         });
 
         // Setup button text with shadow
@@ -48,7 +48,7 @@ export class CustomButton extends FancyButton{
         this.textView = new Text({
             text: text,
             style: textStyle,
-            anchor: 0.5
+            anchor: 0.5,
         });
 
         // Play generic click sound

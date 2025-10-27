@@ -1,25 +1,23 @@
 // Very little sound in the game, so a file like this should be enough
 
-import {Sound, sound} from "@pixi/sound";
-import {songSoundAsset} from "core-utils/assets/assetRegistry.ts";
+import { Sound, sound } from '@pixi/sound';
+import { songSoundAsset } from 'core-utils/assets/assetRegistry.ts';
 
-let songSound : Sound;
+let songSound: Sound;
 
-export function toggleMusic(){
-    if(songSound){
-        if(songSound.isPlaying){
+export function toggleMusic() {
+    if (songSound) {
+        if (songSound.isPlaying) {
             songSound.pause();
+        } else {
+            songSound.play({ loop: true });
         }
-        else{
-            songSound.play({loop: true});
-        }
-    }
-    else{
+    } else {
         songSound = sound.find(songSoundAsset);
-        songSound.play({loop : true});
+        songSound.play({ loop: true });
     }
 }
 
-export function playOneShotSound(assetName: string){
+export function playOneShotSound(assetName: string) {
     sound.play(assetName);
 }

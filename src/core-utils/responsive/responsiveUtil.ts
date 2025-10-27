@@ -1,23 +1,23 @@
 // We can control with this functions the screens logic for showing or removing
 
-import {app} from "core-utils/application/applicationUtil.ts";
-import {Container, Texture, TilingSprite} from "pixi.js";
-import {applicationConfig} from "core-utils/application/applicationConfig.ts";
-import {CustomScreen} from "../../screens/CustomScreen.ts";
-import {MainMenuScreen} from "../../screens/main-menu/MainMenuScreen.ts";
-import {areBundlesLoaded, loadBundles} from "core-utils/assets/assetsUtil.ts";
-import {applicationBackgroundAsset} from "core-utils/assets/assetRegistry.ts";
-import {initOverlay, onScreenWillChange, updateOverlay} from "core-utils/responsive/overlay.ts";
+import { app } from 'core-utils/application/applicationUtil.ts';
+import { Container, Texture, TilingSprite } from 'pixi.js';
+import { applicationConfig } from 'core-utils/application/applicationConfig.ts';
+import { CustomScreen } from '../../screens/CustomScreen.ts';
+import { MainMenuScreen } from '../../screens/main-menu/MainMenuScreen.ts';
+import { areBundlesLoaded, loadBundles } from 'core-utils/assets/assetsUtil.ts';
+import { applicationBackgroundAsset } from 'core-utils/assets/assetRegistry.ts';
+import { initOverlay, onScreenWillChange, updateOverlay } from 'core-utils/responsive/overlay.ts';
 
 export let screenWidth: number;
 export let screenHeight: number;
 
 const screenView = new Container();
 const overlayView = new Container();
-let currentBackground  : TilingSprite;
-let currentScreen : CustomScreen;
+let currentBackground: TilingSprite;
+let currentScreen: CustomScreen;
 
-export async function removeScreen(screen: CustomScreen){
+export async function removeScreen(screen: CustomScreen) {
     // Unlink update function if method is available
     if (screen.update) {
         app.ticker.remove(screen.update, screen);
@@ -66,7 +66,7 @@ export async function showScreen(screen: CustomScreen) {
     }
 }
 
-function resize(){
+function resize() {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const minWidth = applicationConfig.content.width;
@@ -88,7 +88,6 @@ function resize(){
     screenHeight = scaledHeight;
     app.renderer.resize(screenWidth, screenHeight);
 
-
     // Update elements
     currentBackground.width = screenWidth;
     currentBackground.height = screenHeight;
@@ -103,7 +102,7 @@ export async function initResponsive() {
         tileScale: {
             x: applicationConfig.backgroundTileScale,
             y: applicationConfig.backgroundTileScale,
-        }
+        },
     });
     screenView.addChild(currentBackground);
 
