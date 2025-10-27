@@ -68,7 +68,7 @@ export function initOverlay(overlayView: Container) {
 export function updateOverlay() {
     // update fps counter
     if (fpsSample.length >= maxFpsSample) {
-        let avgFps = Math.round(fpsSample.reduce((sum, value) => sum + value, 0) / fpsSample.length);
+        const avgFps = Math.round(fpsSample.reduce((sum, value) => sum + value, 0) / fpsSample.length);
         currentFpsText.text = Math.round(avgFps);
         fpsSample.length = 0;
     }

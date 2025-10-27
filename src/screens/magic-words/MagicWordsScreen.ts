@@ -145,7 +145,7 @@ export class MagicWordsScreen extends CustomScreen {
         textContainer.scale = 0.5;
 
         const avatarContainer = new Container();
-        let avatarSprite = Sprite.from(avatarData.texture);
+        const avatarSprite = Sprite.from(avatarData.texture);
         avatarSprite.scale = 0.5;
         avatarContainer.addChild(avatarSprite);
 
