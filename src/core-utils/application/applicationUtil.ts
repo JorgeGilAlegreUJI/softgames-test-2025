@@ -2,6 +2,7 @@ import { Application } from 'pixi.js';
 
 export const app: Application = new Application();
 
+
 export async function initApplication() {
     const pixiContainer = 'pixi-container';
     const container = document.getElementById(pixiContainer);

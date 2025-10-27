@@ -1,6 +1,6 @@
-import { initApplication } from 'core-utils/application/application.ts';
-import { initLoader } from 'core-utils/assets/assets.ts';
-import { initResponsive } from "core-utils/responsive/responsive.ts";
+import { initApplication } from 'core-utils/application/applicationUtil.ts';
+import { initLoader } from 'core-utils/assets/assetsUtil.ts';
+import { initResponsive } from "core-utils/responsive/responsiveUtil.ts";
 
 async function main() {
     await initApplication();

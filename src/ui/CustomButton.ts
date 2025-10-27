@@ -1,5 +1,7 @@
 import {FancyButton} from "@pixi/ui";
 import { Text, TextStyle} from 'pixi.js';
+import {clickSoundAsset, shortBabyFontAsset} from "core-utils/assets/assetLibrary.ts";
+import {playOneShotSound, toggleMusic} from "core-utils/music/musicUtil.ts";
 
 export class CustomButton extends FancyButton{
     constructor(defaultViewAsset: string, text: string, scale : number) {
@@ -31,9 +33,8 @@ export class CustomButton extends FancyButton{
         });
 
         const textStyle = new TextStyle({
-            // Predefine text styles that can be overwritten
             fill: 0xe8e8e8,
-            fontFamily: 'short_baby',
+            fontFamily: shortBabyFontAsset,
             align: 'center',
             fontSize: 100,
         });
@@ -44,6 +45,11 @@ export class CustomButton extends FancyButton{
             text: text,
             style: textStyle,
             anchor: 0.5
+        });
+
+
+        this.onPress.connect(() => {
+            playOneShotSound(clickSoundAsset);
         });
     }
 }
