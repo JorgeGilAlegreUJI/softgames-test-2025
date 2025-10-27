@@ -5,13 +5,15 @@ let assetsManifest: AssetsManifest = { bundles: [] };
 // Store bundles already loaded. They can be chcked later.
 const loadedBundles: string[] = [];
 
-async function fetchAssetsManifest(url: string) {
-    const response = await fetch(url);
-    const manifest = await response.json();
-    if (!manifest.bundles) {
-        throw new Error('[Assets] Invalid assets manifest');
+async function fetchAssetsManifest(url = './assets/assets-manifest.json') {
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    } catch (err) {
+        console.error('[Assets] Failed to fetch manifest:', err);
+        return null;
     }
-    return manifest;
 }
 
 //Check if a bundle exists in assetManifest
@@ -68,7 +70,7 @@ export function areBundlesLoaded(bundles: string[]) {
 
 export async function initLoader() {
     // Load assets manifest
-    assetsManifest = await fetchAssetsManifest('assets/assets-manifest.json');
+    assetsManifest = await fetchAssetsManifest();
 
     // Init PixiJS assets with this asset manifest
     await Assets.init({ manifest: assetsManifest, basePath: 'assets' });

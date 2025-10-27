@@ -1,9 +1,9 @@
 // Registry used to control what specific assets are going to be loaded. This could be replaced or externalized easily.
 
-export const customButtonAsset = 'red_button';
-export const applicationBackgroundAsset = 'stars_background';
+export const customButtonAsset = 'red_button.png';
+export const applicationBackgroundAsset = 'stars_background.png';
 export const shortBabyFontAsset = 'short_baby';
-export const softgamesLogoAsset = 'softgames_logo';
+export const softgamesLogoAsset = 'softgames_logo.png';
 export const cardAssetA = 'golden_card.png';
 export const cardAssetB = 'silver_card.png';
 export const frogAsset = 'favicon.png';

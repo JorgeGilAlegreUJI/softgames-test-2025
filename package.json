@@ -8,7 +8,7 @@
     "start": "vite --open",
     "clean": "rimraf dist public",
     "clean:full": "rimraf dist public node_modules/.cache/assetpack",
-    "prebuild": "run-s clean format:check lint build-assets types",
+    "prebuild": "run-s format:check lint build-assets types",
     "build": "vite build --base \"./\"",
     "build-assets": "assetpack",
     "prepreview": "run-s build",
