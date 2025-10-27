@@ -1,7 +1,8 @@
 import { Application } from 'pixi.js';
 
-export const app: Application = new Application();
+// Generic file to control general Application-logic
 
+export const app: Application = new Application();
 
 export async function initApplication() {
     const pixiContainer = 'pixi-container';

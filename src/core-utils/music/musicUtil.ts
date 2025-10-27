@@ -1,5 +1,7 @@
+// Very little sound in the game, so a file like this should be enough
+
 import {Sound, sound} from "@pixi/sound";
-import {songSoundAsset} from "core-utils/assets/assetLibrary.ts";
+import {songSoundAsset} from "core-utils/assets/assetRegistry.ts";
 
 let songSound : Sound;
 
@@ -9,7 +11,7 @@ export function toggleMusic(){
             songSound.pause();
         }
         else{
-            songSound.play();
+            songSound.play({loop: true});
         }
     }
     else{

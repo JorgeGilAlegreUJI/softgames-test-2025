@@ -5,6 +5,7 @@ export async function loadJSON<T>(url: string): Promise<T> {
     return await res.json();
 }
 
+// Pixi .from(url) has problem with non-typed urls. This is a workaround
 export async function loadTexture(url: string): Promise<Texture> {
     return new Promise((resolve, reject) => {
         const img = new Image();

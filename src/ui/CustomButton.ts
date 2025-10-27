@@ -1,8 +1,9 @@
 import {FancyButton} from "@pixi/ui";
 import { Text, TextStyle} from 'pixi.js';
-import {clickSoundAsset, shortBabyFontAsset} from "core-utils/assets/assetLibrary.ts";
-import {playOneShotSound, toggleMusic} from "core-utils/music/musicUtil.ts";
+import {clickSoundAsset, shortBabyFontAsset} from "core-utils/assets/assetRegistry.ts";
+import {playOneShotSound} from "core-utils/music/musicUtil.ts";
 
+// Generic class for button, so we can define our default behaviour. Mostly Ui presentation and  animation but also sound.
 export class CustomButton extends FancyButton{
     constructor(defaultViewAsset: string, text: string, scale : number) {
         super({
@@ -11,6 +12,7 @@ export class CustomButton extends FancyButton{
             scale: scale,
             padding: 10,
             animations: {
+                // Will grow bigger on hover
                 hover: {
                     props: {
                         scale: {
@@ -20,6 +22,7 @@ export class CustomButton extends FancyButton{
                     },
                     duration: 100,
                 },
+                // Will shrink on pressed
                 pressed: {
                     props: {
                         scale: {
@@ -32,6 +35,7 @@ export class CustomButton extends FancyButton{
             }
         });
 
+        // Setup button text with shadow
         const textStyle = new TextStyle({
             fill: 0xe8e8e8,
             fontFamily: shortBabyFontAsset,
@@ -47,7 +51,7 @@ export class CustomButton extends FancyButton{
             anchor: 0.5
         });
 
-
+        // Play generic click sound
         this.onPress.connect(() => {
             playOneShotSound(clickSoundAsset);
         });

@@ -1,13 +1,13 @@
 import {CustomScreen} from "../CustomScreen.ts";
 import {Container, Sprite, Text, Texture} from "pixi.js";
 import {CustomButton} from "../../ui/CustomButton.ts";
-import {aceOfShadowsString, authorNameString, magicWordsString, phoenixFlameString} from "core-utils/assets/stringLibrary.ts";
+import {aceOfShadowsString, authorNameString, magicWordsString, phoenixFlameString} from "core-utils/assets/stringRegistry.ts";
 import {
     customButtonAsset,
     frogAsset,
     shortBabyFontAsset,
     softgamesLogoAsset
-} from "core-utils/assets/assetLibrary.ts";
+} from "core-utils/assets/assetRegistry.ts";
 import {screenHeight, screenWidth, showScreen} from "core-utils/responsive/responsiveUtil.ts";
 import {AceOfShadowsScreen} from "../ace-of-shadows/AceOfShadowsScreen.ts";
 import gsap from "gsap";
@@ -40,15 +40,16 @@ export class MainMenuScreen extends CustomScreen{
 
     constructor() {
         super();
+        // Setup funny sprites
         this.addChild(this.funnyContainer);
         for (let i = 0; i < 5; i++) {
-            const sprite = Sprite.from(frogAsset); // use any image
+            const sprite = Sprite.from(frogAsset);
             sprite.anchor.set(0.5);
             sprite.x = Math.random() * screenWidth;
             sprite.y = Math.random() * screenHeight;
             sprite.scale.set(0.1);
 
-            // random velocity
+            // random velocities
             const vx = (Math.random() - 0.5) * 5;
             const vy = (Math.random() - 0.5) * 5;
 
@@ -56,10 +57,12 @@ export class MainMenuScreen extends CustomScreen{
             this.funnyContainer.addChild(sprite);
         }
 
+        // Setup main buttons
         this.mainButtons[0].onPress.connect(() => showScreen(new AceOfShadowsScreen()));
         this.mainButtons[1].onPress.connect(() => showScreen(new MagicWordsScreen()));
         this.mainButtons[2].onPress.connect(() => showScreen(new PhoenixFlame()));
 
+        // Setup company logo
         this.brandLogo.anchor = 0.5;
         this.brandLogo.scale = 0;
         this.logoTween = gsap.to(this.brandLogo, { scale: this.computeResponsiveScale(), duration: 0.75, ease: "power1.inOut", delay: 0.2 ,onComplete: () =>
@@ -69,6 +72,7 @@ export class MainMenuScreen extends CustomScreen{
         }});
         this.addChild(this.brandLogo);
 
+        // Setup name text
         this.nameText.anchor = 0.5;
         this.nameText.scale = 0;
         this.nameTween = gsap.to(this.nameText, { scale: this.computeResponsiveScale(), duration: 0.75, ease: "power1.inOut", delay: 0.4, onComplete: () =>
@@ -83,10 +87,12 @@ export class MainMenuScreen extends CustomScreen{
         }
     }
 
+    // Calculated width for the main buttons to fit well. We'll use this value in general for this screen.
     private neededWidth(){
         return this.buttonsTextureWidth*this.mainButtons.length + (this.buttonsMinSpacing*this.mainButtons.length-1);
     }
 
+    // Calculating general scale based on the previous neededWidth
     private computeResponsiveScale(){
         const width = screenWidth;
         const neededWidth = this.neededWidth();
@@ -96,6 +102,7 @@ export class MainMenuScreen extends CustomScreen{
         return scale;
     }
 
+    // Resize and reposition buttons. If the screen is very wide we can increase spacing.
     private resizeButtons(width: number, height: number, neededWidth : number, scale : number){
         const extraWidth = Math.max(width - neededWidth, 0);
         let spacing = extraWidth*0.1;
@@ -111,7 +118,8 @@ export class MainMenuScreen extends CustomScreen{
         }
     }
 
-    update = () : void =>{
+    // Update funny scripts to move randomly and bounce on edges.
+    private updateFunnySprites() {
         for (const obj of this.funnySprites) {
             const { sprite } = obj;
 
@@ -121,7 +129,6 @@ export class MainMenuScreen extends CustomScreen{
             const halfW = sprite.width / 2;
             const halfH = sprite.height / 2;
 
-            // Bounce on borders
             if (sprite.x - halfW < 0) {
                 sprite.x = halfW;
                 obj.vx *= -1;
@@ -140,7 +147,12 @@ export class MainMenuScreen extends CustomScreen{
         }
     }
 
+    update = () : void =>{
+        this.updateFunnySprites();
+    }
+
     resize = (width: number, height: number): void => {
+        // Multiple objs can use this value
         const responsiveScale = this.computeResponsiveScale();
 
         this.brandLogo.x = width*0.5;
@@ -159,11 +171,5 @@ export class MainMenuScreen extends CustomScreen{
         this.nameText.x = width*0.5;
         this.nameText.y = height*0.5;
         this.resizeButtons(width, height, this.neededWidth(), responsiveScale);
-
-        // // if(this.buttonTween?.isPlaying()){
-        // //     this.buttonTween?.end();
-        // // }
-        // this._button.x = width /2;
-        // this._button.y = height /2;
     };
 }

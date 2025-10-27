@@ -1,10 +1,12 @@
+// We can control with this functions the screens logic for showing or removing
+
 import {app} from "core-utils/application/applicationUtil.ts";
 import {Container, Texture, TilingSprite} from "pixi.js";
 import {applicationConfig} from "core-utils/application/applicationConfig.ts";
 import {CustomScreen} from "../../screens/CustomScreen.ts";
 import {MainMenuScreen} from "../../screens/main-menu/MainMenuScreen.ts";
 import {areBundlesLoaded, loadBundles} from "core-utils/assets/assetsUtil.ts";
-import {applicationBackgroundAsset} from "core-utils/assets/assetLibrary.ts";
+import {applicationBackgroundAsset} from "core-utils/assets/assetRegistry.ts";
 import {initOverlay, onScreenWillChange, updateOverlay} from "core-utils/responsive/overlay.ts";
 
 export let screenWidth: number;
@@ -33,6 +35,7 @@ export async function showScreen(screen: CustomScreen) {
         await removeScreen(currentScreen);
     }
 
+    // Update overlay elements
     onScreenWillChange(screen);
 
     // Load assets for the new screen, if available
@@ -47,14 +50,13 @@ export async function showScreen(screen: CustomScreen) {
     // Add screen to stage
     screenView.addChild(screen);
 
-    // Add screen's resize handler, if available
     if (screen.resize) {
         // Trigger a first resize
         screen.resize(screenWidth, screenHeight);
     }
 
-    // Add update function if available
     if (screen.update) {
+        // Trigger first update
         app.ticker.add(screen.update, screen);
     }
 
@@ -94,6 +96,7 @@ function resize(){
 }
 
 export async function initResponsive() {
+    // setup background
     app.stage.addChild(screenView);
     currentBackground = new TilingSprite({
         texture: Texture.from(applicationBackgroundAsset),
@@ -111,5 +114,6 @@ export async function initResponsive() {
     window.addEventListener('resize', resize);
     resize();
 
+    // After the initial load we want to start the game in the main menu
     await showScreen(new MainMenuScreen());
 }

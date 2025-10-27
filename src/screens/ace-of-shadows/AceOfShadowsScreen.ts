@@ -1,12 +1,13 @@
 import {CustomScreen} from "../CustomScreen.ts";
 import {Container, Point, Sprite} from "pixi.js";
-import { cardAssetA, cardAssetB} from "core-utils/assets/assetLibrary.ts";
+import { cardAssetA, cardAssetB} from "core-utils/assets/assetRegistry.ts";
 import gsap from "gsap";
 
 export class AceOfShadowsScreen  extends CustomScreen{
     private readonly deckTop: Container = new Container();
     private readonly dynamicContainer : Container = new Container();
     private readonly deckBot: Container = new Container();
+
     start = async (): Promise<void> =>{
 
         //Deck top setup
@@ -26,6 +27,7 @@ export class AceOfShadowsScreen  extends CustomScreen{
         this.addChild(this.deckBot);
         this.startCardMovement();
 
+        // Dynamic container setup
         this.addChild(this.dynamicContainer);
     }
 
@@ -40,6 +42,7 @@ export class AceOfShadowsScreen  extends CustomScreen{
         }
     }
 
+    // Position will be relative to the deck but with a slight offset, causing a stacking effect.
     private computeTopCardPosition(deck: Container) : Point{
         const deckLength = deck.children.length;
         return  new Point(deck.x + deckLength * 0.1, deck.y - deckLength * 0.5);
@@ -58,9 +61,9 @@ export class AceOfShadowsScreen  extends CustomScreen{
 
     assetBundles = () => ["ace-of-spades"];
 
+    // In order to move card we play with the cacheAsTexture value
     private moveTopCard() {
         if (this.deckTop.children.length === 0) return;
-
         const topCard = this.deckTop.getChildAt(this.deckTop.children.length - 1) as Sprite;
         topCard.position = this.computeTopCardPosition(this.deckTop);
         this.deckTop.cacheAsTexture(false);
@@ -74,7 +77,7 @@ export class AceOfShadowsScreen  extends CustomScreen{
         gsap.to(topCard, {
             x: targetPos.x,
             y: targetPos.y,
-            duration: 2,
+            duration: 2, // seconds
             ease: "power1.inOut",
             onComplete: () => {
                 this.dynamicContainer.removeChild(topCard);
@@ -89,6 +92,6 @@ export class AceOfShadowsScreen  extends CustomScreen{
     private startCardMovement() {
         setInterval(() => {
             this.moveTopCard();
-        }, 1000);
+        }, 1000); // 1 second
     }
 }

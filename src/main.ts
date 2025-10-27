@@ -3,6 +3,7 @@ import { initLoader } from 'core-utils/assets/assetsUtil.ts';
 import { initResponsive } from "core-utils/responsive/responsiveUtil.ts";
 
 async function main() {
+    // initialize the logic that we need in order.
     await initApplication();
     await initLoader();
     await initResponsive();

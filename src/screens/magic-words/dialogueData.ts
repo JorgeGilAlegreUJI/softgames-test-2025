@@ -1,3 +1,5 @@
+// Interfaces to work with the expected json formats
+
 export interface DialogueEntry {
     name: string;
     text: string;

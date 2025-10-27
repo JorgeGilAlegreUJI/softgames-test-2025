@@ -1,9 +1,8 @@
 import {Assets, AssetsManifest, UnresolvedAsset} from "pixi.js";
 
-/** List of assets grouped in bundles, for dynamic loading */
 let assetsManifest: AssetsManifest = { bundles: [] };
 
-/** Store bundles already loaded */
+// Store bundles already loaded. They can be chcked later.
 const loadedBundles: string[] = [];
 
  async function fetchAssetsManifest(url: string) {
@@ -15,12 +14,12 @@ const loadedBundles: string[] = [];
     return manifest;
 }
 
-/** Check if a bundle exists in assetManifest  */
+//Check if a bundle exists in assetManifest
 function checkBundleExists(bundle: string) {
     return !!assetsManifest.bundles.find((b) => b.name === bundle);
 }
 
-/** Load assets bundles that have nott been loaded yet */
+//Load assets bundles that have nott been loaded yet
 export async function loadBundles(bundles: string | string[]) {
     if (typeof bundles === 'string') bundles = [bundles];
 
@@ -33,15 +32,11 @@ export async function loadBundles(bundles: string | string[]) {
 
     // Filter out bundles already loaded
     const loadList = bundles.filter((bundle) => !loadedBundles.includes(bundle));
-
-    // Skip if there is no bundle left to be loaded
     if (!loadList.length) return;
 
     // Load bundles
     console.log('[Assets] Load:', loadList.join(', '));
     await Assets.loadBundle(loadList);
-
-    // Append loaded bundles to the loaded list
     loadedBundles.push(...loadList);
 }
 

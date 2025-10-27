@@ -2,13 +2,14 @@ import {CustomScreen} from "../CustomScreen.ts";
 import {Container, Sprite, Texture, Text, Point, TextStyle} from "pixi.js";
 import {DialogueData} from "./dialogueData.ts";
 import {loadJSON, loadTexture} from "core-utils/json/jsonUtil.ts";
-import {anonymousAsset, shortBabyFontAsset} from "core-utils/assets/assetLibrary.ts";
+import {anonymousAsset, shortBabyFontAsset} from "core-utils/assets/assetRegistry.ts";
 import {screenHeight, screenWidth} from "core-utils/responsive/responsiveUtil.ts";
 import gsap from "gsap";
 import {AlignedContainer} from "./AlignedContainer.ts";
 import {messageIntervalTime, scrollTime} from "./magicWordsConfig.ts";
-import {loadingString} from "core-utils/assets/stringLibrary.ts";
+import {loadingString} from "core-utils/assets/stringRegistry.ts";
 
+// value used to keep the view responsive and shrink if the width becomes too small.
 const maxWidth = 1100;
 
 export class MagicWordsScreen extends CustomScreen{
@@ -22,10 +23,12 @@ export class MagicWordsScreen extends CustomScreen{
 
     constructor() {
         super();
+        // Setup entries container
         this.entriesContainer.width = screenWidth;
         this.entriesContainer.height = screenHeight;
         this.addChild(this.entriesContainer);
 
+        // Setup loading text
         const textStyle = new TextStyle({
             fill: 0x70f1ff,
             fontFamily: shortBabyFontAsset,
@@ -41,6 +44,7 @@ export class MagicWordsScreen extends CustomScreen{
     }
 
     start = async (): Promise<void> =>{
+        // Load general json
         const dataUrl = "https://private-624120-softgamesassignment.apiary-mock.com/v2/magicwords";
         this.dialogueData = await loadJSON<DialogueData>(dataUrl);
 
@@ -58,6 +62,7 @@ export class MagicWordsScreen extends CustomScreen{
             };
         }
 
+        // Remove loading text
         if(this.loadingText){
             this.removeChild(this.loadingText);
             this.loadingText = null;
@@ -67,26 +72,26 @@ export class MagicWordsScreen extends CustomScreen{
 
     assetBundles = () => ["magic-words"];
 
+    // Takes a string with some {emojiName} elements and creates a container that combines text and sprites to achieve the desired result.
     private generateFromRichText(richText: string) {
         const container = new Container();
         const parts = richText.split(/({[^}]+})/g);
         const fontSize = 50;
+        // Important value to guide us about where to insert the next element.
         let xOffset = 0;
 
-        // Process each part
         parts.forEach(part => {
             const isEmoji = part.match(/{([^}]+)}/);
             if (isEmoji) {
                 const emojiName = isEmoji[1];
                 const texture = this.emojiDataByName[emojiName];
-                console.assert(texture, "emoji has no texture: " + emojiName);
+                console.assert(texture, "emoji has no texture: " + emojiName); // If this happens we simply do not draw the emoji
                 if (texture) {
+                    // insert sprite in container
                     const sprite = new Sprite(texture);
                     sprite.width = fontSize;
                     sprite.height = fontSize;
                     sprite.y = -fontSize / 2;
-
-                    // Position sprite based on current offset
                     sprite.x = xOffset;
                     container.addChild(sprite);
 
@@ -94,6 +99,7 @@ export class MagicWordsScreen extends CustomScreen{
                     xOffset += offset;
                 }
             } else {
+                // insert text in container
                 const textStyle = new TextStyle({
                     fill: 0xe8e8e8,
                     fontFamily: "Arial",
@@ -117,6 +123,7 @@ export class MagicWordsScreen extends CustomScreen{
     }
 
 
+    // We take the data we loaded before and created all the necessary UI elements with it (per dialogue entry);
     popNextMessage() {
         if(!this.dialogueData){
             return;
@@ -126,13 +133,15 @@ export class MagicWordsScreen extends CustomScreen{
             return;
         }
 
+        // Setup avatar data
         const dialogueEntry = this.dialogueData.dialogue[this.currentDialogueIndex];
-
         let avatarData = this.avatarDataByName[dialogueEntry.name];
         if (!avatarData) {
+            // If no avatar data is provided we use the anonymous asset and asume position as left.
             avatarData = { texture: Texture.from(anonymousAsset), position: 'left' };
         }
 
+        // Setup text container, avatar sprite and avatar text
         const textContainer = this.generateFromRichText(dialogueEntry.text);
         textContainer.scale = 0.5;
 
@@ -158,6 +167,7 @@ export class MagicWordsScreen extends CustomScreen{
 
         textContainer.position.y += avatarSprite.height / 2;
 
+        // The aligment is diferent if it is left or right aligned.
         const isOnLeft = avatarData.position === 'left';
         if (isOnLeft) {
             avatarSprite.position.x = 0;
@@ -172,9 +182,10 @@ export class MagicWordsScreen extends CustomScreen{
         }
         avatarText.position.y = avatarSprite.position.y + avatarSprite.height;
 
-
         entryContainer.y = screenHeight - 100;
         this.alignedContainers.push(entryContainer);
+
+        // entry container will hold the previous elements so we can manipulate all together.
         this.entriesContainer.addChild(entryContainer);
 
         const tl = gsap.timeline({
@@ -182,10 +193,13 @@ export class MagicWordsScreen extends CustomScreen{
                 this.entriesContainer.removeChild(entryContainer);
             }
         });
+        // little animation to "pop in"
         tl.to(entryContainer, { scale: this.computeContainerScale(), duration: 0.5, ease: "power1.inOut" });
+        // animation so the entries scroll upwards like in a chat.
         tl.to(entryContainer, { y: -entryContainer.height, duration: scrollTime, ease: "linear" });
         entryContainer.scale = 0;
 
+        // We're done with this index so we increment for the next one.
         this.currentDialogueIndex++;
     }
 
@@ -208,9 +222,7 @@ export class MagicWordsScreen extends CustomScreen{
 
         this.alignedContainers.forEach((alignedContainer) => {
             alignedContainer.scale = this.computeContainerScale();
-            console.log(this.computeContainerScale());
 
-            // If on the right side, align to the right edge
             if (alignedContainer.isRightAligned) {
                 alignedContainer.x = width - alignedContainer.width;
             }

@@ -1,8 +1,10 @@
+// Overlay of Ui element that will be present in most screens.
+
 import {Container, Text, TextStyle} from "pixi.js";
 import {app} from "core-utils/application/applicationUtil.ts";
-import {customButtonAsset, shortBabyFontAsset} from "core-utils/assets/assetLibrary.ts";
+import {customButtonAsset, shortBabyFontAsset} from "core-utils/assets/assetRegistry.ts";
 import {CustomButton} from "../../ui/CustomButton.ts";
-import {backString, fullscreenString, musicString} from "core-utils/assets/stringLibrary.ts";
+import {backString, fullscreenString, musicString} from "core-utils/assets/stringRegistry.ts";
 import {MainMenuScreen} from "../../screens/main-menu/MainMenuScreen.ts";
 import {CustomScreen} from "../../screens/CustomScreen.ts";
 import {showScreen} from "core-utils/responsive/responsiveUtil.ts";
@@ -31,6 +33,7 @@ export function initOverlay(overlayView: Container){
     currentFpsText.x = 10;
     overlayView.addChild(currentFpsText);
 
+    // setup fullscreen button
     fullscreenButton = new CustomButton(customButtonAsset, fullscreenString, 0.25);
     fullscreenButton.anchor.set(0,0);
     fullscreenButton.position.set(10,currentFpsText.height + 10);
@@ -73,6 +76,7 @@ export function updateOverlay(){
 }
 
 export function onScreenWillChange(newScreen: CustomScreen){
+    // we can control here what overlay elements we want in each screen
     const isInMainMenu = newScreen instanceof MainMenuScreen;
     fullscreenButton.visible = isInMainMenu;
     backButton.visible = !isInMainMenu;

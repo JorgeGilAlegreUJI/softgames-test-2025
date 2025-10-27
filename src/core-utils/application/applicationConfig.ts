@@ -1,9 +1,9 @@
-/** Minimum screen width before the resizing function shrinks the view. */
+// Minimum screen width before the resizing function shrinks the view.
 const minWidth = 375;
-/** Minimum screen height before the resizing function shrinks the view. */
+// Minimum screen height before the resizing function shrinks the view.
 const minHeight = 700;
 
-/** Object to store all configuration values for the out of gameplay design logic. */
+//Values used to control the overall presentation of the Application. A designer could control this
 export const applicationConfig = {
     content: {
         width: minWidth,
