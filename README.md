@@ -1,6 +1,9 @@
 Technical test by Jorge Gil Alegre for Softgames 2025.
 I hope you like it ! 😁
 
+## Play
+https://jorgegilalegre2.itch.io/softgames-test-2025-jorgegilalegre?password=1234
+
 ## How to run
 ```
 npm install
